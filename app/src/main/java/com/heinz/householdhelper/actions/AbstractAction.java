@@ -22,6 +22,7 @@ public abstract class AbstractAction implements Action {
 
     /**
      * Whether or not the target URL must contain a filename at the end.
+     *
      * @return
      */
     protected abstract boolean appendFilenameRegex();
@@ -30,6 +31,7 @@ public abstract class AbstractAction implements Action {
 
     /**
      * Register this action to the server.
+     *
      * @param server
      * @param ctx
      */
@@ -41,7 +43,7 @@ public abstract class AbstractAction implements Action {
             bindRegex += filenameRegex;
         }
 
-        for (HttpMethod hm: supportedMethods()) {
+        for (HttpMethod hm : supportedMethods()) {
             switch (hm) {
                 case GET:
                     server.get(bindRegex, new HttpServerRequestCallback() {
@@ -50,6 +52,7 @@ public abstract class AbstractAction implements Action {
                             request(request, response, request.getPath().substring(getResourcePrefix().length()));
                         }
                     });
+                    break;
                 case POST:
                     server.post(bindRegex, new HttpServerRequestCallback() {
                         @Override
@@ -57,27 +60,19 @@ public abstract class AbstractAction implements Action {
                             request(request, response, request.getPath().substring(getResourcePrefix().length()));
                         }
                     });
+                    break;
             }
         }
     }
 
     /**
      * Do sth. with the request.
+     *
      * @param request
      * @param response
      * @param restOfPath
      */
     public abstract void request(AsyncHttpServerRequest request, AsyncHttpServerResponse response, String restOfPath);
 
-    /**
-     * Which http methods are supported. Typically POST, GET, PUT, etc.s
-     * @return
-     */
-    protected abstract HttpMethod[] supportedMethods();
 
-    /**
-     * Resource path.
-     * @return
-     */
-    protected abstract String getResourcePrefix();
 }

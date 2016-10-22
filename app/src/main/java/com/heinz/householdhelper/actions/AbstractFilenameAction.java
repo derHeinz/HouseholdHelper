@@ -10,11 +10,12 @@ public abstract class AbstractFilenameAction extends AbstractAction {
 
     /**
      * Show files stored to the internal storage.
+     *
      * @param filename
      * @return
      */
     protected File findFile(String filename) {
-        for (File f: context.getFilesDir().listFiles()) {
+        for (File f : context.getFilesDir().listFiles()) {
             if (f.getName().equals(filename)) {
                 return f;
             }

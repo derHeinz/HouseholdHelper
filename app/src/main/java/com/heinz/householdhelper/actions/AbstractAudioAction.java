@@ -12,6 +12,7 @@ import java.util.Map;
 public abstract class AbstractAudioAction extends AbstractFilenameAction {
 
     private static Map<String, Integer> defaultAudioFiles;
+
     static {
         defaultAudioFiles = new HashMap<>();
         defaultAudioFiles.put("beep.wav", R.raw.beep);
@@ -20,6 +21,7 @@ public abstract class AbstractAudioAction extends AbstractFilenameAction {
 
     /**
      * Whether it is a default file or not.
+     *
      * @param filename
      * @return
      */
@@ -32,6 +34,7 @@ public abstract class AbstractAudioAction extends AbstractFilenameAction {
 
     /**
      * Get resource ID for the default file denoted by the given filename.
+     *
      * @param filename
      * @return
      */

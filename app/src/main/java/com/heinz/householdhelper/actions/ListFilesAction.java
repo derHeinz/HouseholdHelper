@@ -16,18 +16,23 @@ import org.json.JSONObject;
 public class ListFilesAction extends AbstractAction {
 
     @Override
-    protected String getResourcePrefix() {
+    public String getResourcePrefix() {
         return "/listFiles";
     }
 
     @Override
-    protected HttpMethod[] supportedMethods() {
+    public HttpMethod[] supportedMethods() {
         return new HttpMethod[]{HttpMethod.GET};
     }
 
     @Override
     protected boolean appendFilenameRegex() {
         return false;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Lists all stored media-files.";
     }
 
     @Override

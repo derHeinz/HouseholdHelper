@@ -10,7 +10,7 @@ import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
 import java.io.File;
 
 /**
- * Perfom to play an audio file.
+ * Perfom to play an audio file, which was previously uploaded.
  * use actions like /playAudio/audiofilename
  * Created by Heinz on 14.10.2016.
  */
@@ -23,8 +23,13 @@ public class PlayAudioAction extends AbstractAudioAction {
     }
 
     @Override
-    protected HttpMethod[] supportedMethods() {
+    public HttpMethod[] supportedMethods() {
         return new HttpMethod[]{HttpMethod.POST};
+    }
+
+    @Override
+    public String getDescription() {
+        return "Plays a previously stored media-file.";
     }
 
     @Override

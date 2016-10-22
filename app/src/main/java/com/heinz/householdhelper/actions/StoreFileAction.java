@@ -20,7 +20,6 @@ import java.io.FileOutputStream;
  * JSON structure is like: { file="<base64encoded>" }.  Where the base64encoded string is the content of the file.
  * Created by Heinz on 14.10.2016.
  */
-
 public class StoreFileAction extends AbstractFilenameAction {
 
     @Override
@@ -29,8 +28,13 @@ public class StoreFileAction extends AbstractFilenameAction {
     }
 
     @Override
-    protected HttpMethod[] supportedMethods() {
+    public HttpMethod[] supportedMethods() {
         return new HttpMethod[]{HttpMethod.POST};
+    }
+
+    @Override
+    public String getDescription() {
+        return "Stores a media-file for later playback.";
     }
 
     @Override

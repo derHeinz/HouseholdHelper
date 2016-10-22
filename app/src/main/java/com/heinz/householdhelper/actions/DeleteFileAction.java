@@ -13,13 +13,18 @@ import java.io.File;
 public class DeleteFileAction extends AbstractFilenameAction {
 
     @Override
-    protected String getResourcePrefix() {
+    public String getResourcePrefix() {
         return "/deleteFile/";
     }
 
     @Override
-    protected HttpMethod[] supportedMethods() {
-        return new HttpMethod[] {HttpMethod.POST};
+    public HttpMethod[] supportedMethods() {
+        return new HttpMethod[]{HttpMethod.POST};
+    }
+
+    @Override
+    public String getDescription() {
+        return "Delete a previously stored media-file.";
     }
 
     @Override

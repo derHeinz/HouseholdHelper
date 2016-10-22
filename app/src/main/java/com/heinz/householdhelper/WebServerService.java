@@ -7,8 +7,11 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.heinz.householdhelper.actions.Action;
+import com.heinz.householdhelper.actions.GetBrightnessAction;
+import com.heinz.householdhelper.actions.HelpAction;
 import com.heinz.householdhelper.actions.PlayAudioAction;
 import com.heinz.householdhelper.actions.HasFileAction;
+import com.heinz.householdhelper.actions.SpeakAction;
 import com.heinz.householdhelper.actions.StoreFileAction;
 import com.heinz.householdhelper.actions.ListFilesAction;
 import com.heinz.householdhelper.actions.DeleteFileAction;
@@ -26,12 +29,15 @@ public class WebServerService extends Service {
     private void startAsynchWebServer() {
         AsyncHttpServer server = new AsyncHttpServer();
 
-        Action[] actions = new Action[]{new PlayAudioAction(), new HasFileAction(), new StoreFileAction(), new ListFilesAction(), new DeleteFileAction()};
+        Action[] actions = new Action[]{new PlayAudioAction(), new HasFileAction(), new StoreFileAction(), new ListFilesAction(),
+                new DeleteFileAction(), new GetBrightnessAction(), new SpeakAction()};
 
         for (Action action : actions) {
             action.register(server, this);
             Log.d(TAG, "Registering: " + action);
         }
+        // finally append the HelpAction which may inform about every other action.
+        new HelpAction(actions).register(server, this);
 
         // listen on port 5000
         server.listen(5000);

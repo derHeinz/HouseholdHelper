@@ -12,13 +12,18 @@ import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
 public class HasFileAction extends AbstractFilenameAction {
 
     @Override
-    protected String getResourcePrefix() {
+    public String getResourcePrefix() {
         return "/hasFile/";
     }
 
     @Override
-    protected HttpMethod[] supportedMethods() {
+    public HttpMethod[] supportedMethods() {
         return new HttpMethod[]{HttpMethod.GET};
+    }
+
+    @Override
+    public String getDescription() {
+        return "Whether a given media-file exists on the server.";
     }
 
     @Override
