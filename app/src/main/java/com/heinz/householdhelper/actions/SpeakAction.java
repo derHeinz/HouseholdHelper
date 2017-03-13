@@ -25,11 +25,6 @@ public class SpeakAction extends AbstractSpeakAction {
     }
 
     @Override
-    protected boolean appendFilenameRegex() {
-        return false;
-    }
-
-    @Override
     public String getDescription() {
         return "Speaks out something that it receives via a base64 body.";
     }

@@ -37,11 +37,6 @@ public class HelpAction extends AbstractAction {
     }
 
     @Override
-    protected boolean appendFilenameRegex() {
-        return false;
-    }
-
-    @Override
     public String getDescription() {
         return "Helps with other Actions.";
     }

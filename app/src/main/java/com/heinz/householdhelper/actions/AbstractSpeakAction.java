@@ -14,11 +14,6 @@ import java.util.UUID;
 
 public abstract class AbstractSpeakAction extends AbstractAsyncTaskAction {
 
-    @Override
-    protected boolean appendFilenameRegex() {
-        return false;
-    }
-
     protected void speak(String aText) {
         // Prepare Text to speech
         finisher = new Finisher<Boolean>();

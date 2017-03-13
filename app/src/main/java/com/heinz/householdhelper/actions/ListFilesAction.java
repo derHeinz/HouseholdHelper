@@ -26,11 +26,6 @@ public class ListFilesAction extends AbstractAction {
     }
 
     @Override
-    protected boolean appendFilenameRegex() {
-        return false;
-    }
-
-    @Override
     public String getDescription() {
         return "Lists all stored media-files.";
     }

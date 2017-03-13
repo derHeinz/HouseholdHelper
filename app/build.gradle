@@ -1,14 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        standard {
+            keyAlias 'keystorealias'
+            keyPassword 'i7ajMwTc8vZXcJShQjLe'
+            storeFile file('D:/Programme/Android/keystore/keystore.jks')
+            storePassword 'i7ajMwTc8vZXcJShQjLe'
+        }
+    }
     compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.heinz.householdhelper"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode 11
+        versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -17,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -29,4 +39,5 @@ dependencies {
     compile 'com.koushikdutta.async:androidasync:2.+'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

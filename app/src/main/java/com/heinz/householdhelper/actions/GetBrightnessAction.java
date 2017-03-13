@@ -34,11 +34,6 @@ public class GetBrightnessAction extends AbstractAsyncTaskAction {
     }
 
     @Override
-    protected boolean appendFilenameRegex() {
-        return false;
-    }
-
-    @Override
     public String getDescription() {
         return "Returns the current light level in Lux.";
     }

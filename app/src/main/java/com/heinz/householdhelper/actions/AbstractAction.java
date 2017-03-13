@@ -15,18 +15,6 @@ import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 
 public abstract class AbstractAction implements Action {
 
-    /**
-     * The regex that represents filenames.
-     */
-    protected final String filenameRegex = "[A-Z,a-z,0-9,.,-,_]+";
-
-    /**
-     * Whether or not the target URL must contain a filename at the end.
-     *
-     * @return
-     */
-    protected abstract boolean appendFilenameRegex();
-
     protected Context context;
 
     /**
@@ -38,10 +26,7 @@ public abstract class AbstractAction implements Action {
     public void register(AsyncHttpServer server, Context ctx) {
         context = ctx;
 
-        String bindRegex = getResourcePrefix();
-        if (appendFilenameRegex()) {
-            bindRegex += filenameRegex;
-        }
+        String bindRegex = getResourcePrefix() + getResourceAppend();
 
         for (HttpMethod hm : supportedMethods()) {
             switch (hm) {
@@ -63,6 +48,14 @@ public abstract class AbstractAction implements Action {
                     break;
             }
         }
+    }
+
+    /**
+     * Empty default impl.
+     * */
+    @Override
+    public String getResourceAppend() {
+        return "";
     }
 
     /**

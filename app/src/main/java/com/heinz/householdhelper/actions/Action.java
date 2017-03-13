@@ -40,4 +40,11 @@ public interface Action {
      * @return
      */
     String getResourcePrefix();
+
+    /**
+     * Resource path.
+     *
+     * @return
+     */
+    String getResourceAppend();
 }
