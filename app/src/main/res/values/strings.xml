@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HouseholdHelper</string>
-    <string name="app_version">0.3</string>
+    <string name="app_version">0.4</string>
     <string name="action_settings">Settings</string>
 
     <string name="text_template">HouseholdHelper v$version\n\nFeatures:\n-play audio files\n-manage audio files\n-getting brightness\n-speak text\n-receive temperature from sensor</string>
